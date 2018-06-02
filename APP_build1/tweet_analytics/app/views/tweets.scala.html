@@ -1,0 +1,36 @@
+@*****************************************
+* Authors: Prasanth Simarpreet Vigneswar *
+*****************************************@
+
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(tweets: List[Models.Tweet])
+
+
+@for(tweet <- tweets) { 
+<div class="row">
+     <div class="col-sm-3">
+       <div class="well">
+        <a target="_blank" href="user/@tweet.screenName">@tweet.Username</a>
+        <br>
+        <img src="@tweet.getUserImageUrl()" class="img-circle" height="55" width="55" alt="Avatar">
+       </div>
+     </div>
+     <div class="col-sm-9">
+       <div class="well">
+         <p>@Html(tweet.Text)</p>
+          <table class="table">
+		 <thead>
+    	<tr>
+      <th>ReTweets : @tweet.Retweets </th>
+      <th>Favorites : @tweet.favoriteCount</th>
+      <th>@tweet.tweetTime</th>
+    	</tr>
+ 	</thead>
+      </table>
+       </div>
+     </div>
+ </div>
+ }
